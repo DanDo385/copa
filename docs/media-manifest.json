@@ -1,0 +1,8 @@
+{
+  "generated_at": null,
+  "purpose": "Prototype asset sync only — run scripts/download-media.mjs to populate from live store (GET only)",
+  "store_base": "https://copajewelry.com",
+  "products": [],
+  "assets": [],
+  "placement_map": []
+}

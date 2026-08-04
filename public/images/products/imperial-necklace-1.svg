@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+  <title id="title">Imperial Necklace  prototype placeholder</title>
+  <desc id="desc">Abstract jewelry silhouette placeholder for Imperial Necklace</desc>
+  <rect width="400" height="400" fill="#f6f0e6"/>
+  <path d="M120 120 Q200 60 280 120" fill="none" stroke="#c9952a" stroke-width="3"/>
+  <path d="M140 130 L200 280 L260 130" fill="none" stroke="#1f6363" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="200" cy="290" r="8" fill="#c9952a"/>
+  <text x="200" y="360" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#2c2924">Imperial Necklace</text>
+  <text x="200" y="382" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6e6760" letter-spacing="0.1em">PROTOTYPE PLACEHOLDER</text>
+</svg>

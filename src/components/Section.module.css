@@ -1,0 +1,41 @@
+.section {
+  width: 100%;
+}
+
+.default {
+  background: var(--color-bg);
+}
+
+.elevated {
+  background: var(--color-bg-elevated);
+}
+
+.sunken {
+  background: var(--color-bg-sunken);
+}
+
+.sm {
+  padding-block: var(--space-8);
+}
+
+.md {
+  padding-block: var(--space-12);
+}
+
+.lg {
+  padding-block: var(--space-16);
+}
+
+@media (min-width: 768px) {
+  .sm {
+    padding-block: var(--space-10);
+  }
+
+  .md {
+    padding-block: var(--space-16);
+  }
+
+  .lg {
+    padding-block: var(--space-20);
+  }
+}
