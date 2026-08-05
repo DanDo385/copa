@@ -42,7 +42,7 @@ export function SearchForm({ compact = false, initialQuery = '', onSubmitSuccess
           name="q"
           type="search"
           defaultValue={initialQuery}
-          placeholder="Search earrings, rings, finishes…"
+          placeholder="Search jewelry…"
           className={styles.input}
           autoComplete="off"
           enterKeyHint="search"

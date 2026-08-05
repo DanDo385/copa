@@ -13,11 +13,35 @@ const POLICY_LINKS = [
 ] as const;
 
 const SOCIAL_LINKS = [
-  { href: 'https://www.instagram.com/copajewelry', label: 'Instagram' },
-  { href: 'https://www.tiktok.com/@copajewelry', label: 'TikTok' },
-  { href: 'https://www.facebook.com/copajewelry', label: 'Facebook' },
-  { href: 'https://www.whatnot.com/user/copajewelry', label: 'Whatnot' },
+  { href: 'https://www.instagram.com/copajewelry/', label: 'Instagram' },
+  { href: 'https://www.facebook.com/copacabana.jewelry/', label: 'Facebook' },
+  { href: 'https://www.whatnot.com/user/copajewelry/shop', label: 'Whatnot' },
 ] as const;
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className={styles.socialGlyph} aria-hidden="true" focusable="false">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="4.6" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className={styles.socialGlyph} aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <path
+        d="M13.6 21.3v-7.2h2.4l.4-2.8h-2.8V9.5c0-.8.2-1.3 1.4-1.3h1.5V5.7c-.3 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2.1H8.5v2.8h2.4v7.2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -25,7 +49,8 @@ export function Footer() {
       <Container>
         <div className={styles.grid}>
           <div className={styles.brandBlock}>
-            <p className={styles.brandName}>COPA Jewelry</p>
+            <img src="/images/copa-mark.png" alt="CopaJewelry" className={styles.brandMark} />
+            <p className={styles.brandName}>CopaJewelry</p>
             <p className={styles.tagline}>
               Brazilian-founded taste. Worldwide curation. Styled live by the people who source it.
             </p>
@@ -50,11 +75,11 @@ export function Footer() {
             <p className={styles.placeholder}>
               Support email, hours, and return address — owner approval required.
             </p>
-            <PlaceholderBadge prominent />
+            <PlaceholderBadge />
           </div>
 
           <div className={styles.socialBlock}>
-            <h2 className={styles.heading}>Follow COPA</h2>
+            <h2 className={styles.heading}>Follow CopaJewelry</h2>
             <ul className={styles.socialList}>
               {SOCIAL_LINKS.map((link) => (
                 <li key={link.href}>
@@ -64,6 +89,16 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    {link.label === 'Instagram' && <InstagramIcon />}
+                    {link.label === 'Facebook' && <FacebookIcon />}
+                    {link.label === 'Whatnot' && (
+                      <img
+                        src="/images/whatnot-mark.png"
+                        alt=""
+                        aria-hidden="true"
+                        className={styles.whatnotIcon}
+                      />
+                    )}
                     {link.label}
                   </a>
                 </li>
@@ -74,11 +109,11 @@ export function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.accessibility}>
-            COPA is committed to an accessible shopping experience. Report barriers via the contact
+            CopaJewelry is committed to an accessible shopping experience. Report barriers via the contact
             page once support channels are approved.
           </p>
           <p className={styles.copyright}>
-            © {new Date().getFullYear()} COPA Jewelry. Prototype storefront — not for production
+            © {new Date().getFullYear()} CopaJewelry. Prototype storefront — not for production
             checkout.
           </p>
         </div>

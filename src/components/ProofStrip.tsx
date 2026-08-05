@@ -1,4 +1,6 @@
+import { demoMedia } from '@/data/demo-media';
 import { whatnotProof } from '@/data/whatnot-proof';
+import { Button } from './Button';
 import styles from './ProofStrip.module.css';
 
 export function ProofStrip() {
@@ -10,10 +12,34 @@ export function ProofStrip() {
   return (
     <section className={styles.strip} aria-label="Whatnot community proof">
       <div className={styles.inner}>
-        <p className={styles.intro}>
-          Trusted on Whatnot — {whatnotProof.attributionLabel}, observed{' '}
-          {whatnotProof.observedDate}
-        </p>
+        <div className={styles.heading}>
+          <img
+            src={demoMedia.whatnotStorefront.sourceUrl}
+            alt={demoMedia.whatnotStorefront.alt}
+            className={styles.storeImage}
+          />
+          <div className={styles.headingText}>
+            <p className={styles.liveTag}>
+              <img src="/images/whatnot-mark.png" alt="" aria-hidden="true" className={styles.whatnotIcon} />
+              Trusted on Whatnot
+            </p>
+            <p className={styles.intro}>
+              Trusted on Whatnot — {whatnotProof.attributionLabel}, observed{' '}
+              {whatnotProof.observedDate}
+            </p>
+          </div>
+          <Button
+            href={whatnotProof.sourceUrl}
+            variant="primary"
+            size="md"
+            className={styles.watchButton}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/images/whatnot-mark.png" alt="" aria-hidden="true" className={styles.whatnotIcon} />
+            View our Whatnot page ↗
+          </Button>
+        </div>
         <dl className={styles.stats}>
           {followers && (
             <div>

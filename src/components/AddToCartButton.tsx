@@ -41,18 +41,21 @@ export function AddToCartButton({
       disabled={isDisabled}
       onClick={handleClick}
       className={className}
-      aria-label={`Add ${product.title} to cart`}
+      aria-label={`Add ${product.title} to bag`}
     >
-      Add to cart
+      Add to bag
     </Button>
   );
 
   if (!stickyMobile) return button;
 
   return (
-    <div className={styles.stickyWrap}>
-      <div className={styles.stickyInner}>{button}</div>
-    </div>
+    <>
+      <div className={styles.desktopButton}>{button}</div>
+      <div className={styles.stickyWrap}>
+        <div className={styles.stickyInner}>{button}</div>
+      </div>
+    </>
   );
 }
 

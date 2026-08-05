@@ -237,7 +237,7 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
             Checkout — prototype only
           </Button>
           <Link href="/cart" className={styles.fullCartLink} onClick={onClose}>
-            View full cart
+            View bag
           </Link>
         </footer>
       </div>

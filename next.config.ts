@@ -19,6 +19,11 @@ const nextConfig: NextConfig = {
         hostname: "www.copajewelry.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.whatnot.com",
+        pathname: "/**",
+      },
     ],
   },
 };

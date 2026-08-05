@@ -65,5 +65,5 @@ export function getCartAddOns(cartHandles: string[], catalogHandles: string[], m
 export const RECOMMENDATION_LABELS: Record<CuratedRelation["label"], string> = {
   "complete-the-look": "Complete the look",
   "same-finish": "Same finish",
-  "styled-by-copa": "Styled by COPA",
+  "styled-by-copa": "Styled by CopaJewelry",
 };

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { collections } from '@/data/collections';
 import { useCart } from '@/lib/cart-context';
@@ -24,12 +25,31 @@ interface HeaderProps {
 
 export function Header({ onCartOpen }: HeaderProps) {
   const { itemCount } = useCart();
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+  const [scrolled, setScrolled] = useState(!isHome);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const categoriesId = useId();
   const mobileMenuId = useId();
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
+
+    const threshold = () => Math.min(window.innerHeight * 0.6, 480);
+    const handleScroll = () => setScrolled(window.scrollY > threshold());
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHome]);
+
+  const transparent = isHome && !scrolled;
 
   const closeMobile = useCallback(() => {
     setMobileOpen(false);
@@ -80,11 +100,11 @@ export function Header({ onCartOpen }: HeaderProps) {
   }, [mobileOpen]);
 
   return (
-    <header className={styles.header}>
+    <header className={[styles.header, transparent ? styles.transparent : ''].filter(Boolean).join(' ')}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.logo} aria-label="COPA Jewelry home">
-          <span className={styles.logoMark}>COPA</span>
-          <span className={styles.logoSub}>Jewelry</span>
+        <Link href="/" className={styles.logo} aria-label="CopaJewelry home">
+          <img src="/images/copa-mark.png" alt="" className={styles.logoMark} aria-hidden="true" />
+          CopaJewelry
         </Link>
 
         <nav className={styles.desktopNav} aria-label="Primary">
@@ -144,15 +164,11 @@ export function Header({ onCartOpen }: HeaderProps) {
           <button
             type="button"
             className={styles.cartButton}
-            aria-label={`Open cart, ${itemCount} items`}
+            aria-label={`Shopping bag, ${itemCount} items`}
             onClick={onCartOpen}
           >
-            Cart
-            {itemCount > 0 && (
-              <span className={styles.cartCount} aria-hidden="true">
-                {itemCount}
-              </span>
-            )}
+            Shopping bag
+            {itemCount > 0 && <span className={styles.cartDot} aria-hidden="true" />}
           </button>
           <button
             ref={menuButtonRef}

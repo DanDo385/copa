@@ -38,7 +38,7 @@ export function isClaimPublishable(claim: Claim): boolean {
 export const claims: Claim[] = [
   {
     claim_id: 'brand-name-copa-jewelry',
-    proposedPublicWording: 'COPA Jewelry',
+    proposedPublicWording: 'CopaJewelry',
     applicableProducts: '*',
     evidenceSource: 'Public storefront and Whatnot shop branding observed Aug 3, 2026',
     evidenceOwner: 'Brand / Owner',

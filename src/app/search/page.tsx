@@ -8,7 +8,7 @@ import { SearchResults } from '@/app/search/SearchResults';
 export const metadata: Metadata = {
   title: 'Search',
   description:
-    'Search the COPA Jewelry catalogue by name, category, or finish. Helpful recovery when nothing matches.',
+    'Search the CopaJewelry catalogue by name, category, or finish. Helpful recovery when nothing matches.',
 };
 
 export default function SearchPage() {

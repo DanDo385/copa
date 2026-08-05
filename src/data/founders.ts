@@ -32,7 +32,7 @@ export const founders: Founder[] = [
     role: 'host-styling',
     roleLabel: 'Host & Styling',
     pitchCopy:
-      'Marcela brings COPA to life on live shows and in editorial moments — translating runway energy into wearable pieces you can style every day. Her eye for layering and occasion dressing shapes how we present each collection.',
+      'Marcela brings CopaJewelry to life on live shows and in editorial moments — translating runway energy into wearable pieces you can style every day. Her eye for layering and occasion dressing shapes how we present each collection.',
     bioPlaceholder: true,
     ownerApprovalRequired: true,
     approvalStatus: 'SUPPLIER_EVIDENCE_REQUIRED',
@@ -47,7 +47,7 @@ export const founders: Founder[] = [
     role: 'custom-work',
     roleLabel: 'Custom Work',
     pitchCopy:
-      'Isabella leads custom and made-to-order conversations — helping clients find the right fit, finish, and personal detail. She bridges COPA\'s catalog with one-of-one requests and bespoke adjustments.',
+      'Isabella leads custom and made-to-order conversations — helping clients find the right fit, finish, and personal detail. She bridges CopaJewelry\'s catalog with one-of-one requests and bespoke adjustments.',
     bioPlaceholder: true,
     ownerApprovalRequired: true,
     approvalStatus: 'SUPPLIER_EVIDENCE_REQUIRED',
@@ -62,7 +62,7 @@ export const founders: Founder[] = [
     role: 'curation',
     roleLabel: 'Curation',
     pitchCopy:
-      'Carol curates what makes it into each COPA drop — balancing trend, wearability, and the brand\'s signature boldness. Her selections drive new arrivals, bestseller edits, and limited releases.',
+      'Carol curates what makes it into each CopaJewelry drop — balancing trend, wearability, and the brand\'s signature boldness. Her selections drive new arrivals, bestseller edits, and limited releases.',
     bioPlaceholder: true,
     ownerApprovalRequired: true,
     approvalStatus: 'SUPPLIER_EVIDENCE_REQUIRED',

@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CategoryGrid } from '@/components/CategoryGrid';
+import { HomeHero } from '@/components/HomeHero';
 import { CompleteTheLook } from '@/components/CompleteTheLook';
 import { ConsentCapture } from '@/components/ConsentCapture';
 import { Container } from '@/components/Container';
 import { FounderSection } from '@/components/FounderSection';
 import { LiveShowModule } from '@/components/LiveShowModule';
 import { PackagingSection } from '@/components/PackagingSection';
-import { PlaceholderBadge } from '@/components/PlaceholderBadge';
+import { OwnerNote, PlaceholderBadge } from '@/components/PlaceholderBadge';
 import { ProductCard } from '@/components/ProductCard';
 import { ProofStrip } from '@/components/ProofStrip';
 import { ReviewsSection } from '@/components/ReviewsSection';
@@ -16,45 +17,27 @@ import { Button } from '@/components/Button';
 import { getCollectionProducts, getRelated } from '@/lib/catalog';
 
 export const metadata: Metadata = {
-  title: 'COPA Jewelry — Brazilian-founded curation, styled live',
+  title: 'CopaJewelry — Brazilian-founded curation, styled live',
   description:
     'Jewelry curated worldwide and styled live by Marcela, Isabella, and Carol. Shop the catalogue, join live shows on Whatnot, and explore custom work.',
 };
 
 export default function HomePage() {
-  const bestSellers = getCollectionProducts('best-sellers').slice(0, 8);
-  const styledLooks = getRelated('imperial-necklace', 4);
+  const bestSellers = getCollectionProducts('best-sellers').slice(0, 6);
+  const styledLooks = getRelated('imperial-necklace', 4).filter((product) =>
+    product.images[0]?.startsWith('https://'),
+  );
 
   return (
     <>
-      <section className="hero-home" aria-labelledby="home-hero-title">
-        <Container>
-          <p className="text-accent hero-home__eyebrow">Brazilian modern editorial</p>
-          <h1 id="home-hero-title" className="heading-display hero-home__title">
-            Jewelry curated worldwide, styled live by the people who source it
-          </h1>
-          <p className="hero-home__vp">
-            COPA brings Brazilian-founded taste and worldwide curation to your everyday stack —
-            with live styling help from the founders who choose every piece.
-          </p>
-          <div className="hero-home__actions">
-            <Button href="/shop" variant="primary" size="lg">
-              Shop jewelry
-            </Button>
-            <Button href="/live-shows" variant="secondary" size="lg">
-              Live shows
-            </Button>
-          </div>
-        </Container>
-      </section>
-
+      <HomeHero />
       <ProofStrip />
 
       <Section>
         <Container>
           <div className="section-header">
             <h2 className="heading-display section-header__title">Best sellers</h2>
-            <p className="text-muted">Customer favorites from the COPA catalogue prototype.</p>
+            <p className="text-muted">Customer favorites from the CopaJewelry catalogue prototype.</p>
           </div>
           <ul className="grid grid--4 product-grid">
             {bestSellers.map((product) => (
@@ -73,7 +56,10 @@ export default function HomePage() {
       <CategoryGrid />
       <CompleteTheLook products={styledLooks} />
 
-      <PackagingSection />
+      <PackagingSection
+        imageSrc="/images/editorial-look-1.jpg"
+        imageAlt="CopaJewelry campaign still — styled look, worn on location"
+      />
 
       <Section tone="elevated">
         <Container>
@@ -84,16 +70,18 @@ export default function HomePage() {
                 Brazilian-founded, worldwide curated
               </h2>
               <p className="story-split__body">
-                COPA began with a Brazilian eye for color, movement, and bold stacking — then built
+                CopaJewelry began with a Brazilian eye for color, movement, and bold stacking — then built
                 a catalogue of pieces sourced and styled for real life, not a generic luxury template.
               </p>
-              <p className="story-split__body">
-                Prototype placeholder: final brand story wording, press credits, and editorial
-                permissions require owner approval before production publication.
-              </p>
+              <OwnerNote>
+                <p className="story-split__body">
+                  Prototype placeholder: final brand story wording, press credits, and editorial
+                  permissions require owner approval before production publication.
+                </p>
+              </OwnerNote>
               <PlaceholderBadge prominent />
               <p className="section-footer-link">
-                <Link href="/about">Read our story</Link>
+                <Link href="/our-story">Read our story</Link>
               </p>
             </div>
           </div>
@@ -111,7 +99,7 @@ export default function HomePage() {
               <h2 className="heading-display story-split__title">Made for you, led by a founder</h2>
               <p className="story-split__body">
                 From finish preferences to one-of-one requests, custom work stays human-led. Share
-                inspiration and sizing notes — we&apos;ll respond on COPA&apos;s owned channels.
+                inspiration and sizing notes — we&apos;ll respond on CopaJewelry&apos;s owned channels.
               </p>
               <PlaceholderBadge />
               <Button href="/custom" variant="primary">

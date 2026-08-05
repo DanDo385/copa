@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useId, useState } from 'react';
+import { FormEvent, useEffect, useId, useState } from 'react';
 import { Button } from './Button';
 import { FormField } from './FormField';
 import styles from './ConsentCapture.module.css';
@@ -22,9 +22,14 @@ const PREFERENCE_OPTIONS = [
 
 export function ConsentCapture({ mode = 'newsletter', compact = false }: ConsentCaptureProps) {
   const formId = useId();
+  const [hydrated, setHydrated] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [emailError, setEmailError] = useState<string | undefined>();
   const [smsError, setSmsError] = useState<string | undefined>();
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -60,6 +65,17 @@ export function ConsentCapture({ mode = 'newsletter', compact = false }: Consent
     setSubmitted(true);
   };
 
+  if (!hydrated) {
+    return (
+      <div
+        className={[styles.form, styles.hydrationPlaceholder, compact ? styles.compact : '']
+          .filter(Boolean)
+          .join(' ')}
+        aria-hidden="true"
+      />
+    );
+  }
+
   if (submitted) {
     return (
       <p className={styles.success} role="status">
@@ -76,8 +92,14 @@ export function ConsentCapture({ mode = 'newsletter', compact = false }: Consent
       noValidate
     >
       <h3 id={`${formId}-title`} className={styles.title}>
-        {mode === 'show-reminder' ? 'Show reminders' : 'Stay in touch with COPA'}
+        {mode === 'show-reminder' ? 'Show reminders' : 'CopaJewelry early access'}
       </h3>
+      {mode === 'newsletter' && (
+        <p className={styles.intro}>
+          Join for drop alerts, promotion notes, and future rewards updates. CopaJewelry&apos;s current site
+          advertises 10% off a first order; final program terms require owner approval.
+        </p>
+      )}
 
       <FormField
         id={`${formId}-email`}
@@ -92,7 +114,7 @@ export function ConsentCapture({ mode = 'newsletter', compact = false }: Consent
       <label className={styles.consentRow}>
         <input type="checkbox" name="emailConsent" />
         <span>
-          I agree to receive marketing emails from COPA Jewelry. I can unsubscribe anytime. See{' '}
+          I agree to receive marketing emails from CopaJewelry. I can unsubscribe anytime. See{' '}
           <a href="/privacy">Privacy Policy</a>.
         </span>
       </label>
@@ -110,7 +132,7 @@ export function ConsentCapture({ mode = 'newsletter', compact = false }: Consent
       <label className={styles.consentRow}>
         <input type="checkbox" name="smsConsent" />
         <span>
-          I agree to receive SMS reminders from COPA Jewelry. Message and data rates may apply.
+          I agree to receive SMS reminders from CopaJewelry. Message and data rates may apply.
           Reply STOP to opt out.
         </span>
       </label>
@@ -130,7 +152,7 @@ export function ConsentCapture({ mode = 'newsletter', compact = false }: Consent
       </fieldset>
 
       <p className={styles.disclosure}>
-        Email and SMS consent are collected separately. COPA will not import Whatnot buyer data
+        Email and SMS consent are collected separately. CopaJewelry will not import Whatnot buyer data
         without fresh, channel-specific consent on owned surfaces.
       </p>
 

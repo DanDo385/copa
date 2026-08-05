@@ -1,3 +1,13 @@
+.desktopButton {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopButton {
+    display: block;
+  }
+}
+
 .stickyWrap {
   height: 0;
 }
@@ -9,7 +19,7 @@
   bottom: 0;
   z-index: 30;
   padding: var(--space-3) var(--space-4);
-  background: rgba(251, 247, 240, 0.96);
+  background: rgba(255, 255, 255, 0.96);
   border-top: 1px solid var(--color-border);
   box-shadow: var(--shadow-lg);
 }

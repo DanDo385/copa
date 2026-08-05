@@ -52,7 +52,7 @@ export const faqs: FaqEntry[] = [
     category: 'shipping',
     question: 'How fast does Whatnot order shipping arrive?',
     answer:
-      'The COPA Jewelry Whatnot shop showed a one-day average shipping time as of August 3, 2026. This applies to Whatnot orders only and may differ from website fulfillment.',
+      'The CopaJewelry Whatnot shop showed a one-day average shipping time as of August 3, 2026. This applies to Whatnot orders only and may differ from website fulfillment.',
     approvalStatus: 'VERIFIED',
     placeholder: false,
   },
@@ -97,7 +97,7 @@ export const faqs: FaqEntry[] = [
   {
     id: 'faq-materials-01',
     category: 'materials',
-    question: 'What materials does COPA use?',
+    question: 'What materials does CopaJewelry use?',
     answer:
       'Materials vary by piece and are listed on each product page. Verified examples from our August 2026 audit include brass, stainless steel, 925 sterling silver, moissanite, 5A CZ, and natural quartz. Unverified specs are marked "To be confirmed." We do not publish blanket material performance claims.',
     approvalStatus: 'VERIFIED',
@@ -106,7 +106,7 @@ export const faqs: FaqEntry[] = [
   {
     id: 'faq-materials-02',
     category: 'materials',
-    question: 'Is COPA jewelry hypoallergenic or nickel-free?',
+    question: 'Is CopaJewelry jewelry hypoallergenic or nickel-free?',
     answer:
       'We do not make blanket hypoallergenic or nickel-free claims. Material composition is listed per product where verified. Contact us with specific sensitivity questions — supplier allergen documentation is being collected.',
     approvalStatus: 'DO_NOT_PUBLISH',
@@ -126,7 +126,7 @@ export const faqs: FaqEntry[] = [
   {
     id: 'faq-care-02',
     category: 'care',
-    question: 'Can I wear COPA jewelry in the shower or pool?',
+    question: 'Can I wear CopaJewelry jewelry in the shower or pool?',
     answer:
       'We do not publish water-resistant or tarnish-free claims. Care guidance per material will be provided once supplier evidence is reviewed.',
     approvalStatus: 'DO_NOT_PUBLISH',
@@ -136,7 +136,7 @@ export const faqs: FaqEntry[] = [
   {
     id: 'faq-warranty-01',
     category: 'warranty',
-    question: 'Does COPA offer a warranty?',
+    question: 'Does CopaJewelry offer a warranty?',
     answer:
       'Warranty terms are under owner review. We do not publish lifetime or limited warranty language until written terms are approved. Contact order support for assistance with a specific purchase.',
     approvalStatus: 'DO_NOT_PUBLISH',
@@ -165,9 +165,9 @@ export const faqs: FaqEntry[] = [
   {
     id: 'faq-live-shows-01',
     category: 'live-shows',
-    question: 'Where can I watch COPA live shows?',
+    question: 'Where can I watch CopaJewelry live shows?',
     answer:
-      'COPA Jewelry hosts live selling events on Whatnot. Visit our Whatnot shop for show schedules and notifications. Website live-show embed is a prototype placeholder.',
+      'CopaJewelry hosts live selling events on Whatnot. Visit our Whatnot shop for show schedules and notifications. Website live-show embed is a prototype placeholder.',
     approvalStatus: 'VERIFIED',
     placeholder: false,
   },
@@ -184,7 +184,7 @@ export const faqs: FaqEntry[] = [
   {
     id: 'faq-custom-01',
     category: 'custom',
-    question: 'Does COPA offer custom or made-to-order pieces?',
+    question: 'Does CopaJewelry offer custom or made-to-order pieces?',
     answer:
       'Custom work inquiries are routed to our team (prototype assumption: Isabella Magro). Scope, pricing, and turnaround are not yet published — submit an inquiry via the Custom page placeholder.',
     approvalStatus: 'OWNER_APPROVED',
@@ -202,7 +202,7 @@ export const faqs: FaqEntry[] = [
   {
     id: 'faq-order-support-01',
     category: 'order-support',
-    question: 'How do I contact COPA about my order?',
+    question: 'How do I contact CopaJewelry about my order?',
     answer:
       'Order support contact details (email, hours, response SLA) are being configured for the new storefront. Use existing copajewelry.com contact channels until migration is complete.',
     approvalStatus: 'SUPPLIER_EVIDENCE_REQUIRED',

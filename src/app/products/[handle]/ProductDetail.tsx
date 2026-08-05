@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { formatPrice, getRelated } from '@/lib/catalog';
+import { formatPrice, formatStyleNumber, getRelated } from '@/lib/catalog';
 import { AddToCartButton } from '@/components/AddToCartButton';
 import { CompleteTheLook } from '@/components/CompleteTheLook';
 import { Container } from '@/components/Container';
+import { useOwnerReview } from '@/lib/owner-review-context';
 import { PlaceholderBadge } from '@/components/PlaceholderBadge';
 import { PolicySummary } from '@/components/PolicySummary';
 import { ProductGallery } from '@/components/ProductGallery';
@@ -21,6 +22,7 @@ interface ProductDetailProps {
 export function ProductDetail({ product }: ProductDetailProps) {
   const [selectedVariant, setSelectedVariant] = useState(product.variants[0] ?? null);
   const [quantity, setQuantity] = useState(1);
+  const { reviewMode } = useOwnerReview();
   const related = getRelated(product.handle, 4);
   const showSizeHelp = product.category === 'rings' || product.category === 'bracelets';
 
@@ -34,14 +36,17 @@ export function ProductDetail({ product }: ProductDetailProps) {
             <div className="pdp-buybox">
               <h1 className="heading-display pdp-buybox__title">{product.title}</h1>
               <p className="pdp-buybox__price">
-                {formatPrice(product.priceCents, {
-                  placeholder: product.priceIsPlaceholder,
-                })}
+                {formatPrice(product.priceCents)}
+                {product.priceIsPlaceholder && (
+                  <PlaceholderBadge label="Price to be confirmed" />
+                )}
               </p>
 
-              <div className="pdp-buybox__reviews" aria-label="Judge.me review preview slot">
-                <PlaceholderBadge label="Judge.me preview badge" />
-              </div>
+              {reviewMode && (
+                <div className="pdp-buybox__reviews" aria-label="Judge.me review preview slot">
+                  <PlaceholderBadge label="Judge.me preview badge" />
+                </div>
+              )}
 
               <p className="pdp-buybox__description">{product.description}</p>
 
@@ -65,7 +70,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
               {selectedVariant && (
                 <p className="text-muted pdp-sku">
-                  SKU: <span>{selectedVariant.sku}</span>
+                  Style <span>{formatStyleNumber(selectedVariant.sku)}</span>
                 </p>
               )}
 
@@ -79,8 +84,8 @@ export function ProductDetail({ product }: ProductDetailProps) {
               <PolicySummary />
 
               {product.stylingNote && (
-                <aside className="pdp-founder-note" aria-label="Why COPA chose it">
-                  <h2 className="pdp-founder-note__title">Why COPA chose it</h2>
+                <aside className="pdp-founder-note" aria-label="Why CopaJewelry chose it">
+                  <h2 className="pdp-founder-note__title">Why CopaJewelry chose it</h2>
                   <p className="pdp-founder-note__meta">
                     Editorial styling note — {product.stylingNote.author}
                   </p>
@@ -103,7 +108,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
               <p>
                 Ring and bracelet fit varies by style. Use our{' '}
                 <Link href="/size-guide">size guide</Link> for measurement instructions, or{' '}
-                <Link href="/contact">contact COPA</Link> for human help.
+                <Link href="/contact">contact CopaJewelry</Link> for human help.
               </p>
               <PlaceholderBadge />
             </div>
@@ -120,20 +125,22 @@ export function ProductDetail({ product }: ProductDetailProps) {
         </Container>
       </Section>
 
-      <Section>
-        <Container>
-          <h2 className="heading-display">Reviews</h2>
-          <div className="judgeme-slot" aria-label="Judge.me review widget slot">
-            <PlaceholderBadge label="Judge.me review widget" />
-            <p>Review widget placement for authorized Shopify implementation.</p>
-          </div>
-        </Container>
-      </Section>
+      {reviewMode && (
+        <Section>
+          <Container>
+            <h2 className="heading-display">Reviews</h2>
+            <div className="judgeme-slot" aria-label="Judge.me review widget slot">
+              <PlaceholderBadge label="Judge.me review widget" />
+              <p>Review widget placement for authorized Shopify implementation.</p>
+            </div>
+          </Container>
+        </Section>
+      )}
 
       <CompleteTheLook
         products={related}
         title="Complete the look"
-        subtitle="Selected to pair with this piece — styled by COPA, not behavioral order data."
+        subtitle="Selected to pair with this piece — styled by CopaJewelry, not behavioral order data."
       />
 
       {/*

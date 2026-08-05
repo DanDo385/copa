@@ -1,4 +1,5 @@
 import type { CareNotes, ProductSpecs } from '@/data/products';
+import { formatStyleNumber } from '@/lib/catalog';
 import { PlaceholderBadge } from './PlaceholderBadge';
 import styles from './SpecBlock.module.css';
 
@@ -56,7 +57,7 @@ export function SpecBlock({ specs, careNotes, sku }: SpecBlockProps) {
 
       {sku && (
         <p className={styles.sku}>
-          SKU: <span>{sku}</span>
+          Style <span>{formatStyleNumber(sku)}</span>
         </p>
       )}
 

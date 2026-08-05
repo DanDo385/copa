@@ -13,7 +13,7 @@ interface CompleteTheLookProps {
 export function CompleteTheLook({
   products,
   title = 'Complete the look',
-  subtitle = 'Styled by COPA — curated pairings until order data supports behavioral recommendations.',
+  subtitle = 'Styled by CopaJewelry — curated pairings until order data supports behavioral recommendations.',
 }: CompleteTheLookProps) {
   if (products.length === 0) return null;
 

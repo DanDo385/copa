@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import { Jost } from "next/font/google";
 import "@/styles/globals.css";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
 import { SiteChrome } from "@/components/SiteChrome";
+import { SiteMain } from "@/components/SiteMain";
 import { Providers } from "@/app/providers";
+
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-jost",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
-    default: "COPA Jewelry",
-    template: "%s | COPA Jewelry",
+    default: "CopaJewelry",
+    template: "%s | CopaJewelry",
   },
   description:
     "Brazilian-founded jewelry curation with live styling from the people who source it. Prototype storefront.",
@@ -20,15 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={jost.variable}>
       <body>
         <Providers>
           <a href="#main-content" className="skip-link">
@@ -36,9 +37,7 @@ export default function RootLayout({
           </a>
           <AnnouncementBar />
           <SiteChrome />
-          <main id="main-content" className="site-main">
-            {children}
-          </main>
+          <SiteMain>{children}</SiteMain>
           <Footer />
         </Providers>
       </body>

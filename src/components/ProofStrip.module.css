@@ -1,11 +1,7 @@
 .strip {
   padding: var(--space-6) var(--space-4);
-  background: linear-gradient(
-    135deg,
-    rgba(31, 99, 99, 0.08),
-    rgba(201, 149, 42, 0.08)
-  );
-  border-block: 1px solid var(--color-border);
+  background: rgba(232, 73, 43, 0.06);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .inner {
@@ -13,11 +9,69 @@
   margin-inline: auto;
 }
 
+.heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.storeImage {
+  width: 8rem;
+  height: 5rem;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border: 1px solid var(--color-border-strong);
+}
+
+.headingText {
+  flex: 1 1 16rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.liveTag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-coral-muted);
+}
+
+.whatnotIcon {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 22%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liveDot {
+    animation: none;
+  }
+}
+
 .intro {
-  margin: 0 0 var(--space-4);
+  margin: 0;
   font-family: var(--font-display);
   font-size: var(--text-lg);
   color: var(--color-ink);
+}
+
+.watchButton {
+  flex: 0 0 auto;
+  background-color: var(--color-coral-muted) !important;
+  border-color: var(--color-coral-muted) !important;
+}
+
+.watchButton:hover {
+  background-color: var(--color-coral-soft) !important;
+  border-color: var(--color-coral-soft) !important;
 }
 
 .stats {
@@ -30,6 +84,17 @@
 @media (min-width: 768px) {
   .stats {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    align-items: flex-start;
+  }
+
+  .storeImage {
+    width: 6rem;
+    height: 4rem;
   }
 }
 
@@ -46,7 +111,7 @@
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--weight-bold);
-  color: var(--color-sea);
+  color: var(--color-coral-muted);
 }
 
 .attribution {

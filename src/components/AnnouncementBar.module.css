@@ -1,11 +1,15 @@
 .bar {
-  background: var(--color-sea);
+  background: var(--color-ink);
   color: var(--color-bg-elevated);
   min-height: var(--announcement-height);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--space-2) var(--space-4);
+}
+
+.message strong {
+  color: var(--color-accent-soft);
 }
 
 .inner {

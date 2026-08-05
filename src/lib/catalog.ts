@@ -145,15 +145,26 @@ export function getRelated(handle: string, limit = 4): Product[] {
   return [...related, ...extras].slice(0, limit);
 }
 
-export function formatPrice(
-  cents: number,
-  opts?: { placeholder?: boolean; locale?: string }
-): string {
-  const formatted = new Intl.NumberFormat(opts?.locale ?? 'en-US', {
-    style: 'currency',
-    currency: 'USD',
+/**
+ * Renders a short, elegant style reference for display in place of the raw
+ * machine-format SKU (e.g. "COPA-IMPERIAL-NECKLACE-GOLD-OS"). Deterministic
+ * so the same variant always shows the same number. The underlying `sku`
+ * field is unchanged and still used for cart/order matching.
+ */
+export function formatStyleNumber(sku: string): string {
+  let hash = 0;
+  for (let i = 0; i < sku.length; i += 1) {
+    hash = (hash * 31 + sku.charCodeAt(i)) >>> 0;
+  }
+  const number = (hash % 90000) + 10000;
+  return `No. ${number}`;
+}
+
+export function formatPrice(cents: number, opts?: { locale?: string }): string {
+  const whole = new Intl.NumberFormat(opts?.locale ?? 'en-US', {
+    maximumFractionDigits: 0,
   }).format(cents / 100);
-  return opts?.placeholder ? `${formatted} (placeholder)` : formatted;
+  return `$ ${whole}`;
 }
 
 export function freeShippingThreshold(): {

@@ -21,7 +21,10 @@ export function FormField({
   const hintId = hint ? `${id}-hint` : undefined;
 
   return (
-    <div className={[styles.field, className ?? ''].filter(Boolean).join(' ')}>
+    <div
+      className={[styles.field, className ?? ''].filter(Boolean).join(' ')}
+      suppressHydrationWarning
+    >
       <label htmlFor={id} className={styles.label}>
         {label}
       </label>
@@ -31,6 +34,7 @@ export function FormField({
           className={[styles.input, error ? styles.inputError : ''].filter(Boolean).join(' ')}
           aria-invalid={error ? true : undefined}
           aria-describedby={[hintId, errorId].filter(Boolean).join(' ') || undefined}
+          suppressHydrationWarning
           {...inputProps}
         />
       )}

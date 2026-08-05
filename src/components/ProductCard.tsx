@@ -1,11 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import type { Product, StockState } from '@/data/products';
 import { formatPrice } from '@/lib/catalog';
 import { useCart } from '@/lib/cart-context';
+import { useOwnerReview } from '@/lib/owner-review-context';
 import { PlaceholderBadge } from './PlaceholderBadge';
 import styles from './ProductCard.module.css';
 
@@ -31,6 +31,7 @@ function stockLabel(state: StockState): string {
 
 export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) {
   const { addItem } = useCart();
+  const { reviewMode } = useOwnerReview();
   const primaryImage = product.images[0];
   const defaultVariant = product.variants.find((v) => v.available) ?? product.variants[0];
 
@@ -50,11 +51,9 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
       <Link href={`/products/${product.handle}`} className={styles.mediaLink}>
         <div className={styles.imageWrap}>
           {primaryImage ? (
-            <Image
+            <img
               src={primaryImage}
               alt={product.title}
-              fill
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className={styles.image}
             />
           ) : (
@@ -69,9 +68,10 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
         </Link>
 
         <p className={styles.price}>
-          {formatPrice(product.priceCents, {
-            placeholder: product.priceIsPlaceholder,
-          })}
+          {formatPrice(product.priceCents)}
+          {product.priceIsPlaceholder && (
+            <PlaceholderBadge label="Price to be confirmed" className={styles.priceBadge} />
+          )}
         </p>
 
         {finishLabel && <p className={styles.finish}>{finishLabel}</p>}
@@ -80,9 +80,11 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
           {stockLabel(product.stockState)}
         </p>
 
-        <div className={styles.reviewSlot} aria-label="Review preview placeholder">
-          <PlaceholderBadge label="Judge.me preview" />
-        </div>
+        {reviewMode && (
+          <div className={styles.reviewSlot} aria-label="Review preview placeholder">
+            <PlaceholderBadge label="Judge.me preview" />
+          </div>
+        )}
 
         {showQuickAdd && defaultVariant?.available && (
           <button

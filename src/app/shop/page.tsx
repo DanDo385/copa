@@ -8,7 +8,7 @@ import { getCollection, getCollectionProducts } from '@/lib/catalog';
 export const metadata: Metadata = {
   title: 'Shop all jewelry',
   description:
-    'Browse the full COPA Jewelry catalogue — earrings, necklaces, rings, bracelets, and ear cuffs with filters and sorting.',
+    'Browse the full CopaJewelry catalogue — earrings, necklaces, rings, bracelets, and ear cuffs with filters and sorting.',
 };
 
 export default function ShopPage() {
@@ -32,7 +32,7 @@ export default function ShopPage() {
           </h1>
           <p className="page-intro__subtitle">
             {collection?.description ??
-              'Browse the full COPA catalog prototype with category, finish, and price filters.'}
+              'Browse the full CopaJewelry catalog prototype with category, finish, and price filters.'}
           </p>
           {collection?.ownerApprovalRequired && <PlaceholderBadge />}
         </Container>

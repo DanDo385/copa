@@ -1,6 +1,7 @@
 'use client';
 
 import { FREE_SHIPPING_THRESHOLD_CENTS } from '@/lib/catalog';
+import { useOwnerReview } from '@/lib/owner-review-context';
 import styles from './AnnouncementBar.module.css';
 import { PlaceholderBadge } from './PlaceholderBadge';
 
@@ -15,6 +16,10 @@ export function AnnouncementBar({
   freeShippingThresholdCents = FREE_SHIPPING_THRESHOLD_CENTS,
   showReminder,
 }: AnnouncementBarProps) {
+  const { reviewMode } = useOwnerReview();
+
+  if (!reviewMode) return null;
+
   return (
     <div className={styles.bar} role="region" aria-label="Store announcement">
       <div className={styles.inner}>
@@ -31,7 +36,7 @@ export function AnnouncementBar({
             </>
           )}
         </p>
-        <PlaceholderBadge prominent />
+        <PlaceholderBadge />
       </div>
       <p className={styles.srOnly}>
         Final announcement copy requires owner approval before production launch.

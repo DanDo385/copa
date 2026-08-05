@@ -25,7 +25,7 @@ export const whatnotProof: WhatnotProof = {
   observedDate: '2026-08-03',
   attributionLabel: 'Whatnot shop metrics',
   disclaimer:
-    'These figures are from the COPA Jewelry Whatnot shop profile observed August 3, 2026. They are not website reviews, DTC order counts, or Judge.me ratings. Always label the platform when displaying.',
+    'These figures are from the CopaJewelry Whatnot shop profile observed August 3, 2026. They are not website reviews, DTC order counts, or Judge.me ratings. Always label the platform when displaying.',
   metrics: [
     {
       key: 'followers',

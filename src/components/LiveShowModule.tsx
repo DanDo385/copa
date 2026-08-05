@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import { whatnotProof } from '@/data/whatnot-proof';
+import { formatShowTime, getUpcomingShows } from '@/lib/whatnot-schedule';
 import { Button } from './Button';
 import { Container } from './Container';
 import { ConsentCapture } from './ConsentCapture';
-import { PlaceholderBadge } from './PlaceholderBadge';
 import { Section } from './Section';
 import styles from './LiveShowModule.module.css';
 
 export function LiveShowModule() {
+  const nextShow = getUpcomingShows(new Date(), 1)[0];
+
   return (
     <Section>
       <Container>
@@ -24,8 +26,11 @@ export function LiveShowModule() {
               <div>
                 <dt>Next show</dt>
                 <dd>
-                  Schedule placeholder — timezone and cadence require owner approval
-                  <PlaceholderBadge />
+                  {nextShow ? formatShowTime(nextShow.start) : 'Schedule unavailable'}
+                  <span className={styles.scheduleNote}>
+                    Estimated from the observed Wed/Fri, 11:00 AM cadence — timezone requires
+                    owner confirmation.
+                  </span>
                 </dd>
               </div>
               <div>
@@ -47,7 +52,7 @@ export function LiveShowModule() {
           <div className={styles.reminder}>
             <h3 className={styles.reminderTitle}>Remind me</h3>
             <p className={styles.reminderCopy}>
-              Get show reminders on COPA&apos;s owned channels — separate from Whatnot notifications.
+              Get show reminders on CopaJewelry&apos;s owned channels — separate from Whatnot notifications.
             </p>
             <ConsentCapture mode="show-reminder" compact />
           </div>
