@@ -6,3 +6,4 @@ playwright-report
 tsconfig.tsbuildinfo
 .env*
 .firecrawl
+.vercel
