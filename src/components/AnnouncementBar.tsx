@@ -1,46 +1,46 @@
 'use client';
 
-import { FREE_SHIPPING_THRESHOLD_CENTS } from '@/lib/catalog';
-import { useOwnerReview } from '@/lib/owner-review-context';
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 import styles from './AnnouncementBar.module.css';
-import { PlaceholderBadge } from './PlaceholderBadge';
 
-interface AnnouncementBarProps {
-  /** Owner-approved shipping threshold in cents, when configured. */
-  freeShippingThresholdCents?: number;
-  /** Optional live-show reminder message. */
-  showReminder?: string;
-}
+export function AnnouncementBar() {
+  const barRef = useRef<HTMLDivElement>(null);
 
-export function AnnouncementBar({
-  freeShippingThresholdCents = FREE_SHIPPING_THRESHOLD_CENTS,
-  showReminder,
-}: AnnouncementBarProps) {
-  const { reviewMode } = useOwnerReview();
+  useEffect(() => {
+    const el = barRef.current;
+    if (!el) return;
 
-  if (!reviewMode) return null;
+    const setHeightVar = () => {
+      document.documentElement.style.setProperty(
+        '--announcement-height-actual',
+        `${el.offsetHeight}px`,
+      );
+    };
+
+    setHeightVar();
+    const observer = new ResizeObserver(setHeightVar);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className={styles.bar} role="region" aria-label="Store announcement">
+    <div ref={barRef} className={styles.bar} role="region" aria-label="Store announcement">
       <div className={styles.inner}>
-        <p className={styles.message}>
-          {showReminder ? (
-            <>
-              <span className={styles.label}>Live show:</span> {showReminder}
-            </>
-          ) : (
-            <>
-              Free shipping on orders over{' '}
-              <strong>${(freeShippingThresholdCents / 100).toFixed(0)}</strong>
-              <span className={styles.demoNote}> — configurable demo threshold</span>
-            </>
-          )}
+        <p className={styles.fallNote}>
+          <span aria-hidden="true">🍂</span> Fall preview coming soon
         </p>
-        <PlaceholderBadge />
+        <span className={styles.divider} aria-hidden="true" />
+        <Link href="/#newsletter" className={styles.promoLink}>
+          <img
+            src="/images/whatnot-mark.png"
+            alt=""
+            aria-hidden="true"
+            className={styles.whatnotIcon}
+          />
+          Sign up for a Whatnot discount code
+        </Link>
       </div>
-      <p className={styles.srOnly}>
-        Final announcement copy requires owner approval before production launch.
-      </p>
     </div>
   );
 }

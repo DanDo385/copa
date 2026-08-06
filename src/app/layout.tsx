@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import "@/styles/globals.css";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
+import { ChatWidget } from "@/components/ChatWidget";
 import { Footer } from "@/components/Footer";
 import { SiteChrome } from "@/components/SiteChrome";
 import { SiteMain } from "@/components/SiteMain";
@@ -39,6 +40,7 @@ export default function RootLayout({
           <SiteChrome />
           <SiteMain>{children}</SiteMain>
           <Footer />
+          <ChatWidget />
         </Providers>
       </body>
     </html>

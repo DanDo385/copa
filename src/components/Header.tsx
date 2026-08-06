@@ -167,7 +167,8 @@ export function Header({ onCartOpen }: HeaderProps) {
             aria-label={`Shopping bag, ${itemCount} items`}
             onClick={onCartOpen}
           >
-            Shopping bag
+            <span aria-hidden="true" className={styles.cartLabelFull}>Shopping bag</span>
+            <span aria-hidden="true" className={styles.cartLabelShort}>Bag</span>
             {itemCount > 0 && <span className={styles.cartDot} aria-hidden="true" />}
           </button>
           <button

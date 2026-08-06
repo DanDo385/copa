@@ -105,6 +105,14 @@
   --bp-xl: 1280px;
 }
 
+@media (max-width: 639px) {
+  :root {
+    /* Announcement bar stacks to two lines on narrow screens (see AnnouncementBar.module.css) —
+       reserve enough height so the fixed header never overlaps it. */
+    --announcement-height: 4.5rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --duration-fast: 0ms;

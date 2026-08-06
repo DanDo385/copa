@@ -1,22 +1,24 @@
 /**
  * COPA Jewelry Whatnot show schedule.
  *
- * Cadence (Wednesdays & Fridays, 11:00 AM) is derived from the live Whatnot
- * shop's public "Upcoming Shows" list, observed Aug 4, 2026 — 11 consecutive
- * shows followed that exact pattern with no exceptions. Timezone is assumed
- * America/New_York (common default for US-based sellers) and show length is
- * assumed 90 minutes; neither figure is published by Whatnot, so both remain
- * OWNER_APPROVED-pending in the decision register, not verified fact.
+ * Cadence: Wednesdays at 1:00 PM ET and Fridays at 11:00 AM ET, per owner-
+ * provided schedule. Timezone is assumed America/New_York (common default
+ * for US-based sellers) and show length is assumed 90 minutes; neither
+ * figure is published by Whatnot, so both remain OWNER_APPROVED-pending in
+ * the decision register, not verified fact.
  *
  * Show instants are computed in the assumed timezone (DST-aware) and then
- * displayed using the viewer's own browser-local timezone, so "11:00 AM"
- * always means 11:00 AM America/New_York converted to wherever the visitor
- * actually is — not 11:00 AM in whichever timezone the runtime happens to be.
+ * displayed using the viewer's own browser-local timezone, so each time
+ * shown always means the real ET show time converted to wherever the
+ * visitor actually is — not the raw hour in whichever timezone the runtime
+ * happens to be.
  */
 
-export const SHOW_DAYS_OF_WEEK = [3, 5] as const; // Wed, Fri (Date#getDay(): Sun=0..Sat=6)
-export const SHOW_HOUR = 11;
-export const SHOW_MINUTE = 0;
+// Wed, Fri (Date#getDay(): Sun=0..Sat=6) mapped to their show start time in ASSUMED_TIMEZONE.
+export const SHOW_TIMES_BY_WEEKDAY: Record<number, { hour: number; minute: number }> = {
+  3: { hour: 13, minute: 0 }, // Wednesday, 1:00 PM ET
+  5: { hour: 11, minute: 0 }, // Friday, 11:00 AM ET
+};
 export const ASSUMED_SHOW_LENGTH_MINUTES = 90;
 export const ASSUMED_TIMEZONE = 'America/New_York';
 
@@ -62,9 +64,10 @@ export function getUpcomingShows(from: Date, count: number): ShowOccurrence[] {
     const candidate = new Date(from.getTime() + dayOffset * 86_400_000);
     const { year, month, day } = getZonedDateParts(candidate, ASSUMED_TIMEZONE);
     const weekday = new Date(Date.UTC(year, month, day)).getUTCDay();
-    if (!(SHOW_DAYS_OF_WEEK as readonly number[]).includes(weekday)) continue;
+    const showTime = SHOW_TIMES_BY_WEEKDAY[weekday];
+    if (!showTime) continue;
 
-    const start = zonedTimeToUtc(year, month, day, SHOW_HOUR, SHOW_MINUTE, ASSUMED_TIMEZONE);
+    const start = zonedTimeToUtc(year, month, day, showTime.hour, showTime.minute, ASSUMED_TIMEZONE);
     const end = new Date(start.getTime() + ASSUMED_SHOW_LENGTH_MINUTES * 60_000);
 
     const alreadyIncluded = shows.some((show) => show.start.getTime() === start.getTime());

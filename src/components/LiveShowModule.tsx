@@ -28,8 +28,8 @@ export function LiveShowModule() {
                 <dd>
                   {nextShow ? formatShowTime(nextShow.start) : 'Schedule unavailable'}
                   <span className={styles.scheduleNote}>
-                    Estimated from the observed Wed/Fri, 11:00 AM cadence — timezone requires
-                    owner confirmation.
+                    Shown in your local time zone — shows run Wed 1 PM / Fri 11 AM ET, per
+                    owner-provided schedule.
                   </span>
                 </dd>
               </div>

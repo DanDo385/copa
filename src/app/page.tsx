@@ -110,9 +110,11 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section>
+      <Section id="newsletter">
         <Container>
-          <ConsentCapture mode="newsletter" />
+          <div className="newsletter-centered">
+            <ConsentCapture mode="newsletter" />
+          </div>
         </Container>
       </Section>
     </>

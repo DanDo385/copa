@@ -376,6 +376,6 @@
 .layoutBare .reminderForm {
   margin-top: var(--space-4);
   padding: var(--space-4);
-  background: rgba(252, 235, 200, 0.97);
+  background: #ffffff;
   border: 1px solid rgba(107, 32, 17, 0.16);
 }

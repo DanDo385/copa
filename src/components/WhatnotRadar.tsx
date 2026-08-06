@@ -120,8 +120,8 @@ export function WhatnotRadar({ bare = false }: WhatnotRadarProps) {
               )}
               <p className={styles.caveat}>
                 {bare
-                  ? 'Times reflect the observed Wed/Fri, 11 AM cadence — timezone and length unconfirmed.'
-                  : 'Times reflect the observed Wednesday / Friday, 11:00 AM cadence — exact timezone and show length require owner confirmation.'}
+                  ? 'Shown in your local time — shows run Wed 1 PM / Fri 11 AM ET.'
+                  : 'Shown in your local time zone — shows run Wednesday 1:00 PM / Friday 11:00 AM ET, per owner-provided schedule.'}
               </p>
               <Button
                 variant={live ? 'secondary' : 'primary'}

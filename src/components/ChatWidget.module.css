@@ -1,0 +1,273 @@
+.wrap {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: 55;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+}
+
+.launcher {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-coral-muted);
+  background: var(--color-bg-elevated);
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(107, 32, 17, 0.22);
+  transition: transform 200ms ease;
+}
+
+.launcher:hover {
+  transform: scale(1.05);
+}
+
+.launcherAvatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.panel {
+  width: min(22rem, calc(100vw - var(--space-8)));
+  height: min(32rem, calc(100vh - 8rem));
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 24px 60px rgba(26, 26, 26, 0.24);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(232, 73, 43, 0.06);
+}
+
+.headerAvatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.headerName {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+
+.headerSubtitle {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+}
+
+.closeButton {
+  margin-left: auto;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: transparent;
+  font-size: var(--text-xl);
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-ink-muted);
+}
+
+.closeButton:hover {
+  color: var(--color-ink);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.bubbleRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+.bubbleRowUser {
+  justify-content: flex-end;
+}
+
+.bubbleAvatar {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.bubble {
+  max-width: 82%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-sunken);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.bubble p {
+  margin: 0;
+}
+
+.bubbleUser {
+  background: var(--color-ink);
+  color: #fff;
+}
+
+.bubbleImage {
+  display: block;
+  max-width: 100%;
+  margin-bottom: var(--space-2);
+}
+
+.typingDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 4px;
+  border-radius: var(--radius-full);
+  background: var(--color-ink-subtle);
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+
+.typingDot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typingDot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typingBounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typingDot {
+    animation: none;
+  }
+}
+
+.errorText {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--color-coral-muted);
+}
+
+.form {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-3);
+}
+
+.attachmentPreview {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-2);
+}
+
+.attachmentPreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid var(--color-border-strong);
+}
+
+.attachmentPreview button {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--color-ink);
+  color: #fff;
+  font-size: 0.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.formRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.fileInput {
+  display: none;
+}
+
+.attachButton {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  cursor: pointer;
+  font-size: var(--text-base);
+}
+
+.textInput {
+  flex: 1;
+  min-width: 0;
+  height: 2.25rem;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+
+.textInput:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+
+.sendButton {
+  flex-shrink: 0;
+  height: 2.25rem;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+}
+
+.sendButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    right: var(--space-3);
+    bottom: var(--space-3);
+  }
+}
