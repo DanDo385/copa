@@ -28,8 +28,8 @@
   z-index: 1;
   display: grid;
   gap: var(--space-8);
-  align-items: center;
-  padding-top: calc(var(--header-height) + var(--announcement-height-actual, var(--announcement-height)) + var(--space-8));
+  align-items: start;
+  padding-top: calc(var(--header-height) + var(--announcement-height-actual, var(--announcement-height)) + var(--space-5));
   padding-bottom: var(--space-8);
 }
 

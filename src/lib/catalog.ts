@@ -167,6 +167,18 @@ export function formatPrice(cents: number, opts?: { locale?: string }): string {
   return `$ ${whole}`;
 }
 
+/** Formats an ISO date string ("2026-08-03") as "Aug 3, 2026" for display. */
+export function formatObservedDate(isoDate: string): string {
+  const [year, month, day] = isoDate.split('-').map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  return new Intl.DateTimeFormat('en-US', {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  }).format(date);
+}
+
 export function freeShippingThreshold(): {
   cents: number;
   formatted: string;

@@ -1,5 +1,6 @@
 import { demoMedia } from '@/data/demo-media';
 import { whatnotProof } from '@/data/whatnot-proof';
+import { formatObservedDate } from '@/lib/catalog';
 import { Button } from './Button';
 import styles from './ProofStrip.module.css';
 
@@ -24,8 +25,8 @@ export function ProofStrip() {
               Trusted on Whatnot
             </p>
             <p className={styles.intro}>
-              Trusted on Whatnot — {whatnotProof.attributionLabel}, observed{' '}
-              {whatnotProof.observedDate}
+              {whatnotProof.attributionLabel}, observed{' '}
+              {formatObservedDate(whatnotProof.observedDate)}
             </p>
           </div>
           <Button
